@@ -107,6 +107,22 @@ All those transformations can be enabled from the application by clicking **[CRE
 - Set the source directory for the input files to be transformed
 - Set the destination directory for the output files which will be created after the transformation. It is useful to note that destination could be set the same folder as the "Outbox spool directory" in order to send the converted file automatically.
 
+
+#### Create and send simple invoice 
+There is a potential risk that a small suppliers can face with a situation when they need to create a BIS3 standard invoice which is not an easy task. For that reason a separate CSV invoice format is prepared. The invoice data are handled by Excel application via particular *template** (Excel sheet) and then data are exported as CSV file. The given CSV file should be moved to the "Source directory" of the "CSV-to-BIS3" transformation and the result in BIS3 format is generated in the "Destination directory". Then the BIS3 xml file could be sent via  [**Send Documents**](#menu-item--send-documents) menu item.
+
+> *The invoice template for CSV can be found in the sub-folder "Templates" which is located in the application's working directory.
+
+Example of CSV template and exported data:
+
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-csv-template1.png" width=100%>
+
+-   Multiple lines where each line refers to a line item of the invoice (yellow mark in the sample);    
+-   CSV file contains only one invoice;
+-   CSV field separator is a semicolon symbol “;”
+-   First line always contains a header with field names. Every field has its dedicated position in the file (according the excel layout the positions are the columns A, B, C …);
+-   All lines belonging to one invoice have a value in a specific column in common (e.g. InvoiceNo, IssueDate, Sender…, Receiver …). This is called the “grouping key” or “grouping field”.
+
 #### Menu item | Logs
 Use the Logs view for troubleshooting the events:
 
