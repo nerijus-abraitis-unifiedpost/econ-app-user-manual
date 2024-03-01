@@ -107,18 +107,18 @@ The document types are available:
  - CreditNote
  - InvoiceResponse
 
-> There is no possibility to send MessageLevelResponse as it is sent by Access point server.
+> There is no possibility to send the MessageLevelResponse from the app as it is handled in the Access point level.
 
 ### Menu item | Send Documents
 
-Use this section in order to handle your outgoing documents:
+Use this section for handling your outgoing documents:
 
 <img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-send-documents.PNG" width=85%>
 
-The view contains 3 sections:
+The section view contains 3 sections:
  - **Outbox Spool** - where to place BIS3 UBL files (documents) in order to get them send out. The sending engine works automatically, every X minutes, which are set in the argument "Minutes between sending documents". Also it is possible to put and send files manually  by clicking **[ADD DOCUMENTS]** and then **[SEND DOCUMENTS]**
  - **Outbox** - where the sent documents will be moved after they have been sent. The status of the sent document can be verified in a  [**Outbox**](#menu-item--outbox) view.
- - **Failed** - where the documents are placed if they have been failed during the sending process. The error description could be found next to the original file with the `*.json` extention.
+ - **Failed** - where the documents are placed if they have been failed to send.
 
 ### Menu item | Transformations
 
@@ -129,7 +129,7 @@ Use this section in order to handle your outgoing documents:
 
 Transformations engine is based on a XSLT v2.0 programming language which is mostly used for transforming XML documents into different structures or formats. It provides a powerful and expressive framework for transforming XML documents, and it is widely used in various applications, including data integration, document generation, and web development.
 
-This option lets you to customize the existing transformations and also to add your own as well. All the transformation source files (*.xsl) are stored in a sub-folder "Transformations" which is located in the application's working directory, like in a sample below:
+This option lets you to customize the existing transformations and also to add your own as well. All the transformation template files (*.xsl) are stored in a sub-folder "Transformations" which is located in the application's working directory, like in a sample below:
 
 <img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-tr-folder.PNG" width=50%>
 
@@ -150,13 +150,13 @@ Example of CSV template and exported data:
 
 <img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-csv-template1.png" width=100%>
 
-- Multiple lines where each line refers to a line item of the invoice (yellow mark in the sample);    
-- CSV file contains only one invoice;
+- CSV file contains only one invoice
+- It has multiple lines where each line refers to a line item of the invoice (yellow mark in the sample)    
 - CSV field separator is a semicolon symbol “;”
-- First line always contains a header with field names. Every field has its dedicated position in the file (according the excel layout the positions are the columns A, B, C …);
+- First line always contains a header with field names. Every field has its dedicated position in the file (according the excel layout the positions are the columns A, B, C …)
 - All lines belonging to one invoice have a value in a specific column in common (e.g. InvoiceNo, IssueDate, Sender…, Receiver …). This is called the “grouping key” or “grouping field”.
 
-#### Notes for Rivile transformation 
+#### Notes for the transformation of the ERP Rivile 
 The original Rivile data file misses the required information for BIS3. For that reason the transformation file must be updated before the first use:
  - Open the file "Rivile-to-BIS3.xsl" with a Notepad 
  - Enter the Supplier's data (name, reg.number, VAT number & etc.) by changing the variables which name starts with `Sender*`
