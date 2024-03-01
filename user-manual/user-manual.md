@@ -21,7 +21,7 @@ In order to start using it you need to:
 ### Navigating the application
 After you start the `EuroConnector.ClientApp.exe` the following application view should be loaded:
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-setup.png" width=90%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-setup.png" width=75%>
 
 The next sections explains the functions which are available in the application.
 
@@ -52,7 +52,7 @@ The view presents the dashboard of the application. It contains several parts:
 - the version of the application;
 - the version and some additional information from the Access point API. Information is presented if the connection to the API was established successfully.
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-home.png" width=90%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-home.png" width=80%>
 
 #### Menu item | Inbox
 The view as presented below is displayed when you select the Inbox item:
@@ -67,7 +67,7 @@ Inbox view contains a table with the received documents. There are a few operati
 
 The data in the table depends on the selected filtering conditions which could be set in the filter dialog box by clicking the button **[FILTER]**:
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-inbox-filter.png" width=60%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-inbox-filter.png" width=50%>
 
 The documents table is not displayed if there is no documents in the Inbox according the selected filter. By start using the application the default filter is set which retrieves documents created in the last 10 days. 
 
@@ -81,7 +81,7 @@ The outbox view works in the same way as an Inbox, the only difference is that i
 
 Use this section in order to handle your outgoing documents:
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-send-documents.PNG" width=75%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-send-documents.PNG" width=85%>
 
 The view contains 3 sections:
  - **Outbox Spool** - where to place BIS3 UBL files (documents) in order to get them send out. The sending engine works automatically, every X minutes, which are set in the argument "Minutes between sending documents". Also it is possible to put and send files manually  by clicking **[ADD DOCUMENTS]** and then **[SEND DOCUMENTS]**
@@ -90,14 +90,26 @@ The view contains 3 sections:
 
 #### Menu item | Transformations
 
+There is an extra feature in the application for converting a few most popular Lithuanian e-invoice formats to the BIS3 standard UBL. This option lets you to
 Use this section in order to handle your outgoing documents:
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-tr.PNG" width=100%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-tr.PNG" width=90%>
 
+Transformations engine is based on a XSLT v2.0 framework. This option lets you to customize the existing transformations and also to add your own as well. All the transformation source files (*.xsl) are stored in a sub-folder "Transformations" which is located in the application's working directory, like in a sample below:
+
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-tr-folder.PNG" width=50%>
+
+All those transformations can be enabled from the application by clicking **[CREATE]** and then creating a transformation setup item:
+
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-tr-create.PNG" width=50%>
+
+- Select the XSLT name from the drop-down box
+- Set the source directory for the input files to be transformed
+- Set the destination directory for the output files which will be created after the transformation. It is useful to note that destination could be set the same folder as the "Outbox spool directory" in order to send the converted file automatically.
 
 #### Menu item | Logs
 Use the Logs view for troubleshooting the events:
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ-logs.PNG" width=75%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-logs.PNG" width=80%>
 
 You can filter logs by date and log level, do some extra filtering by adding search keywords.
