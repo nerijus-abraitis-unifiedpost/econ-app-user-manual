@@ -38,10 +38,13 @@ and click **[SAVE]** button.
 The connection should be established and you will be moved to the [**Home**](#menu-item--home) screen of the application.
 
 Also it is important to setup the working data locations for the application:
-- **Outbox spool directory** - where the outgoing UBL files should be dropped
-- **Outbox directory** - where the sent files will be saved
-- **Inbox directory** - where the received files will be saved
-- **Failed directory** - where the files will be moved in case of an error
+|  |  |
+|--|--|
+| Outbox spool directory | where the outgoing UBL files should be dropped |
+| Outbox directory| where the sent files will be saved | 
+| Inbox directory| where the received files will be saved | 
+| Failed directory | where the files will be moved in case of an error | 
+
 
 Don't forget to press the **[SAVE]** button after you set those arguments.
 
@@ -52,18 +55,27 @@ The view presents the dashboard of the application. It contains several parts:
 - the version of the application;
 - the version and some additional information from the Access point API. Information is presented if the connection to the API was established successfully.
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-home.png" width=80%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-home1.png" width=80%>
 
 #### Menu item | Inbox
 The view as presented below is displayed when you select the Inbox item:
 
 <img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-inbox-notes.PNG" width=100%>
 
-Inbox view contains a table with the received documents. There are a few operations available here:
- - **View document data** - retrieves more metadata about the document. It depends on Access point provider's implementation how many data is displayed.
- - **Download document** - downloads the document content from the API and saves it to the local Inbox folder as a file in a original document's format. Open that folder in order to read those files.
- - **Invoice response** - allows you to respond to the received invoice and let the Supplier know whether you accepting it or not. The response is prepared as a standard [Peppol Invoice response message](https://docs.peppol.eu/poacc/upgrade-3/2023-Q4/profiles/63-invoiceresponse/).
- - **Response status** - redirects to the related documents (invoice or response message)
+Inbox view contains a table with the received documents which could be as follows:
+ - Invoice
+ - CreditNote
+ - MessageLevelResponse
+ - InvoiceResponse
+
+There are a few actions available here:
+|  |  |
+|--|--|
+| View document data | retrieves more metadata about the document. It depends on Access point provider's implementation how many data is displayed. |
+| Download document | downloads the document content from the API and saves it to the local Inbox folder as a file in a original document's format. Open that folder in order to read those files  | 
+| Invoice response | allows Customers to respond to the received invoice and let the Suppliers know whether they accepting it or not. Click [here](#triggering-invoice-response) to find out more  | 
+| Response status | redirects to the related documents (invoice or response message)  | 
+
 
 The data in the table depends on the selected filtering conditions which could be set in the filter dialog box by clicking the button **[FILTER]**:
 
@@ -71,11 +83,30 @@ The data in the table depends on the selected filtering conditions which could b
 
 The documents table is not displayed if there is no documents in the Inbox according the selected filter. By start using the application the default filter is set which retrieves documents created in the last 10 days. 
 
+#### Triggering Invoice response
+
+The [Peppol Invoice response message](https://docs.peppol.eu/poacc/upgrade-3/2023-Q4/profiles/63-invoiceresponse/) is a standardized electronic document exchanged between business partners through the Peppol network. This message serves as a confirmation or response to a previously sent Peppol Invoice. It typically includes information about the status of the invoice, such as acceptance, rejection, or other relevant updates.
+ 
+ The example below presents how to send the response to an invoice:
+ 
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-imr.png" width=50%>
+
+ - Choose the response code from the drop-down box
+ - Add some description
+ - Send the response by clicking button **[SEND]**
+ - Check the response status by clicking on an icon "Response status" which changes the view to Outbox with the reference to the received invoice
+ 
+ > The invoice response is generated according the [Peppol Invoice response message](https://docs.peppol.eu/poacc/upgrade-3/2023-Q4/profiles/63-invoiceresponse/) standard
+ 
 #### Menu item | Outbox
 The outbox view works in the same way as an Inbox, the only difference is that it presents the sent documents and it has separate filtering conditions.
 
 <img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-outbox.PNG" width=100%>
 
+The view contains a table with the sent documents which could be as follows:
+ - Invoice
+ - CreditNote
+ - InvoiceResponse
 
 #### Menu item | Send Documents
 
@@ -109,7 +140,7 @@ All those transformations can be enabled from the application by clicking **[CRE
 
 
 #### Create and send simple invoice 
-There is a potential risk that a small suppliers can face with a situation when they need to create a BIS3 standard invoice which is not an easy task. For that reason a separate CSV invoice format is prepared. The invoice data are handled by Excel application via particular *template** (Excel sheet) and then data are exported as CSV file. The given CSV file should be moved to the "Source directory" of the "CSV-to-BIS3" transformation and the result in BIS3 format is generated in the "Destination directory". Then the BIS3 xml file could be sent via  [**Send Documents**](#menu-item--send-documents) menu item.
+There is a potential risk that a small suppliers can face with a situation when they need to create a BIS3 standard invoice which is not an easy task. For that reason a separate CSV invoice format is prepared. The invoice data are handled by Excel application via particular *template** (Excel sheet) and then data are exported as a CSV file. The given CSV file should be moved to the "Source directory" of the "CSV-to-BIS3" transformation and the result in BIS3 format is generated in the "Destination directory". Then the BIS3 xml file could be sent via the same application using  [**Send Documents**](#menu-item--send-documents) menu item.
 
 > *The invoice template for CSV can be found in the sub-folder "Templates" which is located in the application's working directory.
 
