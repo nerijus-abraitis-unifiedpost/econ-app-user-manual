@@ -122,8 +122,7 @@ The section view contains 3 sections:
 
 ### Menu item | Transformations
 
-There is an extra feature in the application for converting a few most popular Lithuanian e-invoice formats to the BIS3 standard UBL. This option lets you to
-Use this section in order to handle your outgoing documents:
+There is an extra feature in the application for converting a few most popular Lithuanian e-invoice formats to the BIS3 standard UBL:
 
 <img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-tr.PNG" width=90%>
 
