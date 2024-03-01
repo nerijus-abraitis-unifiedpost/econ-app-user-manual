@@ -21,7 +21,7 @@ In order to start using it you need to:
 ### Navigating the application
 After you start the `EuroConnector.ClientApp.exe` the following application view should be loaded:
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ-first-run-setup.PNG" width=60%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-setup.png" width=90%>
 
 The next sections explains the functions which are available in the application.
 
@@ -37,39 +37,62 @@ and click **[SAVE]** button.
 
 The connection should be established and you will be moved to the [**Home**](#menu-item--home) screen of the application.
 
-Also you will be asked to enter the settings for Inbox and Outbox. Please enter them and click **[SAVE]** button.
+Also it is important to setup the working data locations for the application:
+- **Outbox spool directory** - where the outgoing UBL files should be dropped
+- **Outbox directory** - where the sent files will be saved
+- **Inbox directory** - where the received files will be saved
+- **Failed directory** - where the files will be moved in case of an error
+
+Don't forget to press the **[SAVE]** button after you set those arguments.
 
 
 #### Menu item | Home
 The view presents the dashboard of the application. It contains several parts:
 - current date and time;
-- the version and some additional information from the Access point API. Information is presented if the connection to the API was established successfully;
-- the version of the current application.
+- the version of the application;
+- the version and some additional information from the Access point API. Information is presented if the connection to the API was established successfully.
 
-![Euroconnector Home](https://einvoice.epay.lt/documentation/.econ-images/econ-home.PNG)
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-home.png" width=90%>
 
 #### Menu item | Inbox
-The view like below is displayed when you select the Inbox item:
+The view as presented below is displayed when you select the Inbox item:
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ-inbox1.PNG" width=75%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-inbox-notes.PNG" width=100%>
 
-There are few operations available here:
- - View Document Data - retrieves more metadata about newly received document. It depends on Access point provider's implementation how many data is displayed.
- - Download Document - downloads the document content from the API and saves it to the local Inbox folder as BIS3 UBL file. Open that folder in order to read those files.
+Inbox view contains a table with the received documents. There are a few operations available here:
+ - **View document data** - retrieves more metadata about the document. It depends on Access point provider's implementation how many data is displayed.
+ - **Download document** - downloads the document content from the API and saves it to the local Inbox folder as a file in a original document's format. Open that folder in order to read those files.
+ - **Invoice response** - allows you to respond to the received invoice and let the Supplier know whether you accepting it or not. The response is prepared as a standard [Peppol Invoice response message](https://docs.peppol.eu/poacc/upgrade-3/2023-Q4/profiles/63-invoiceresponse/).
+ - **Response status** - redirects to the related documents (invoice or response message)
 
-If you want to download all received documents at once, please click the button **[DOWNLOAD&nbsp;ALL&nbsp;DOCUMENTS]**.
+The data in the table depends on the selected filtering conditions which could be set in the filter dialog box by clicking the button **[FILTER]**:
 
-The documents table is not displayed if there is no new documents in the Inbox.
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-inbox-filter.png" width=60%>
+
+The documents table is not displayed if there is no documents in the Inbox according the selected filter. By start using the application the default filter is set which retrieves documents created in the last 10 days. 
 
 #### Menu item | Outbox
-Select the Outbox menu item in order to handle your outgoing documents:
+The outbox view works in the same way as an Inbox, the only difference is that it presents the sent documents and it has separate filtering conditions.
 
-<img src="https://einvoice.epay.lt/documentation/.econ-images/econ-outbox2.PNG" width=75%>
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-outbox.PNG" width=100%>
+
+
+#### Menu item | Send Documents
+
+Use this section in order to handle your outgoing documents:
+
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-send-documents.PNG" width=75%>
 
 The view contains 3 sections:
- - **Outbox Spool** - where to place BIS3 UBL files (documents) in order to get them send out. The sending engine works automatically, every X minutes, which are set in the argument "Minutes between sending documents".
- - **Sent** - where the sent documents will be moved after they are successfully sent out;
+ - **Outbox Spool** - where to place BIS3 UBL files (documents) in order to get them send out. The sending engine works automatically, every X minutes, which are set in the argument "Minutes between sending documents". Also it is possible to put and send files manually  by clicking **[ADD DOCUMENTS]** and then **[SEND DOCUMENTS]**
+ - **Outbox** - where the sent documents will be moved after they have been sent. The status of the sent document can be verified in a  [**Outbox**](#menu-item--outbox) view.
  - **Failed** - where the documents are placed if they have been failed during the sending process. The error description could be found next to the original file with the `*.json` extention.
+
+#### Menu item | Transformations
+
+Use this section in order to handle your outgoing documents:
+
+<img src="https://einvoice.epay.lt/documentation/.econ-images/econ2-tr.PNG" width=100%>
 
 
 #### Menu item | Logs
